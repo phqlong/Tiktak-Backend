@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+import psycopg2
 import dj_database_url
 import os
 from datetime import timedelta
@@ -130,6 +131,10 @@ WSGI_APPLICATION = 'tiktak.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
+DATABASE_URL = os.environ['DATABASE_URL']
+conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -214,7 +219,7 @@ CORS_ALLOW_ALL_ORIGINS = True
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
-prod_db = dj_database_url.config(conn_max_age=500)
+prod_db = dj_database_url.config(conn_max_age=500, ssl_require=True)
 DATABASES['default'].update(prod_db)
 
 if os.getcwd() == '/app':
