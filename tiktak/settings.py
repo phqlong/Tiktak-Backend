@@ -131,21 +131,28 @@ WSGI_APPLICATION = 'tiktak.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-
-DATABASE_URL = os.environ['DATABASE_URL']
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tiktak',
-        'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': '127.0.0.1',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd86bad5d4lcpuv',
+        'USER': 'jziedozrhgxpuy',
+        'PASSWORD': '9b43364fe98d22d91aa3f6a4f42ab131fc1f6cf87d54061aca519a797cef6313',
+        'HOST': 'ec2-44-198-80-194.compute-1.amazonaws.com',
         'PORT': '5432',
     }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tiktak',
+#         'USER': 'postgres',
+#         'PASSWORD': 'admin',
+#         'HOST': '127.0.0.1',
+#         'PORT': '5432',
+#     }
+# }
+# DATABASE_URL = os.environ['DATABASE_URL']
+# conn = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -183,8 +190,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+# PROJECT_ROOT = os.path.join(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
@@ -193,7 +200,8 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # STATICFILES_DIRS = [
 #     BASE_DIR / 'static',
