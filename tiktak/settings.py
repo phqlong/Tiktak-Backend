@@ -30,7 +30,7 @@ SECRET_KEY = 'nwtd+of*+uef5o6-3slg%3l2m74s+*puxvecutbako6u)33!jv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.herokuapp.com']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'tiktakwatch.herokuapp.com']
 
 
 # Application definition
